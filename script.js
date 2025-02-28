@@ -153,10 +153,17 @@ function closeGalleryModal() {
 // ✅ ESC 키로 열린 모달 닫기
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-        ["modalVideoCheck", "modalCompCard", "galleryModal","gallery2Modal"].forEach(modalId => {
+        let modals = {
+            "modalVideoCheck": closeModal,
+            "modalCompCard": closeModal,
+            "galleryModal": closeGalleryModal,
+            "gallery2Modal": closeGallery2Modal
+        };
+
+        Object.keys(modals).forEach(modalId => {
             let modal = document.getElementById(modalId);
-            if (modal && modal.style.display === "flex") {
-                closeModal(modalId);
+            if (modal && window.getComputedStyle(modal).display !== "none") {
+                modals[modalId](modalId);
             }
         });
     }
@@ -164,12 +171,19 @@ document.addEventListener("keydown", function (event) {
 
 // ✅ 모달 바깥 클릭 시 닫기
 document.addEventListener("DOMContentLoaded", function () {
-    ["modalVideoCheck", "modalCompCard", "galleryModal","gallery2Modal"].forEach(modalId => {
+    let modals = {
+        "modalVideoCheck": closeModal,
+        "modalCompCard": closeModal,
+        "galleryModal": closeGalleryModal,
+        "gallery2Modal": closeGallery2Modal
+    };
+
+    Object.keys(modals).forEach(modalId => {
         let modal = document.getElementById(modalId);
         if (modal) {
             modal.addEventListener("click", function (event) {
-                if (event.target === this) {
-                    closeModal(modalId);
+                if (event.target === modal) {
+                    modals[modalId](modalId);
                 }
             });
         }
