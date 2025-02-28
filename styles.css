@@ -47,19 +47,21 @@ body {
     width: 100%;
 }
 
-.gallery-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
-    gap: 10px;
-    padding: 10px;
-}
-
 .gallery-item {
     flex: 0 0 auto;
-    cursor: pointer;
+    scroll-snap-align: center;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* 중앙에 있는 이미지 강조 효과 */
+.gallery-item.active {
+    transform: scale(1.2); /* 크기 확대 */
+    opacity: 1;
+}
+
+.gallery-item:not(.active) {
+    transform: scale(0.8);
+    opacity: 0.6;
 }
 
 .gallery-item img {
@@ -74,6 +76,18 @@ body {
 /* 마우스로 드래그해서 넘기기 가능하도록 설정 */
 .gallery-container::-webkit-scrollbar {
     display: none; /* 스크롤바 숨김 */
+}
+
+/* 갤러리 중앙 정렬 및 강조 스타일 */
+.gallery-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* 중앙 정렬 자동 조정 */
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding: 10px;
 }
 
 /* 커버 스타일 */
