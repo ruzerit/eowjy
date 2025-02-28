@@ -69,11 +69,13 @@ const galleryContainer = document.querySelector(".gallery-container");
 const galleryItems = document.querySelectorAll(".gallery-item");
 
 function updateCenterImage() {
-    let centerIndex = Math.round(galleryContainer.scrollLeft / galleryContainer.clientWidth);
-    
+    let scrollLeft = galleryContainer.scrollLeft;
+    let itemWidth = galleryItems[0].offsetWidth + 10; // 이미지 너비 + 갭 크기
+    let centerIndex = Math.round(scrollLeft / itemWidth); // 정확한 중앙 이미지 찾기
+
     galleryItems.forEach((item, index) => {
         if (index === centerIndex) {
-            item.classList.add("active"); // 현재 선택된 이미지 강조
+            item.classList.add("active");
         } else {
             item.classList.remove("active");
         }
@@ -91,29 +93,36 @@ document.querySelectorAll(".gallery-item img").forEach(img => {
     }
 });
 
-// 페이지 로드 시 비디오 모달 숨기기 (완전히 안 보이도록)
 document.addEventListener("DOMContentLoaded", function () {
     let videoModal = document.getElementById("modalVideoCheck");
     let compCardModal = document.getElementById("modalCompCard");
+    let videoElement = document.querySelector("#modalVideoCheck video");
 
     if (videoModal) {
         videoModal.style.display = "none";
         videoModal.style.opacity = "0";
+        videoModal.style.visibility = "hidden"; // 완전히 숨김
     }
     if (compCardModal) {
         compCardModal.style.display = "none";
         compCardModal.style.opacity = "0";
+        compCardModal.style.visibility = "hidden";
+    }
+    if (videoElement) {
+        videoElement.removeAttribute("autoplay"); // 자동 재생 방지
+        videoElement.pause();
     }
 });
 
-// 모달 닫기 함수 수정 (부드럽게 사라지도록)
+// 모달 닫기 기능 수정
 function closeModal(id) {
     let modal = document.getElementById(id);
     if (modal) {
         modal.style.opacity = "0";
-        setTimeout(() => {
+        modal.style.visibility = "hidden";
+        modal.addEventListener("transitionend", () => {
             modal.style.display = "none";
-        }, 300); // 0.3초 후 완전히 숨김
+        }, { once: true }); // 한 번만 실행되도록 설정
     }
 }
 
