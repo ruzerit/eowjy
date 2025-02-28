@@ -30,10 +30,10 @@ body {
 
 /* ✅ 커버 제목 스타일 수정 */
 .cover-content h1 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 500;
     position: absolute;
-    top: 70%; /* 커버 안에서 아래쪽 배치 */
+    top: 65%; /* 커버 안에서 아래쪽 배치 */
     left: 50%;
     transform: translateX(-50%);
     color: white;
@@ -42,7 +42,7 @@ body {
     border-radius: 10px;
     text-align: center;
     display: block; /* 제목이 안 보이는 문제 해결 */
-    z-index: 10; /* 다른 요소 위에 오도록 */
+    z-index: 20; /* 다른 요소 위에 오도록 */
 }
 
 /* ✅ 모바일에서 커버 이미지 비율 조정 */
@@ -80,11 +80,11 @@ button.btn {
 /* ✅ 버튼 기본 스타일 */
 .btn {
     display: inline-block;
-    padding: 14px 28px;
-    font-size: 18px;
+    padding: 12px 24px;
+    font-size: 16px;
     font-weight: 500;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */
@@ -111,22 +111,24 @@ button.btn {
 /* ✅ 유도 버튼을 커버 안쪽 하단에 위치하도록 수정 */
 .cover .buttons {
     position: absolute;
-    bottom: 10%; /* 커버 하단보다 조금 위 */
+    bottom: 8%; /* 커버 하단보다 조금 위 */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 10; /* 다른 요소 위에 위치 */
 }
 
 .cover .btn {
-    padding: 16px 32px;
+    padding: 18px 36px; /* 버튼 크기 조정 */
     font-size: 20px;
     font-weight: 600;
     border-radius: 30px;
-    max-width: 90%; /* 버튼이 너무 커지지 않도록 제한 */
+    max-width: 80%; /* 너무 커지지 않도록 제한 */
 }
+
 
 .cover .btn:hover {
     background: rgba(255, 255, 255, 0.5);
@@ -238,7 +240,7 @@ body.dark-mode .contact {
 .gallery {
     position: relative;
     width: 100%;
-    min-height: 60vh;
+    min-height: 40px;
     padding: 20px 0;
     overflow: hidden;
 }
@@ -256,6 +258,10 @@ body.dark-mode .contact {
     justify-content: center;
     height: auto;
     max-width: 100vw;
+}
+
+.gallery-container::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 */
 }
 
 /* ✅ 갤러리 아이템 크기 조정 */
@@ -299,11 +305,6 @@ body.dark-mode .contact {
     opacity: 0.6;
 }
 
-/* ✅ 슬라이드 정상 작동을 위한 설정 */
-.gallery-container::-webkit-scrollbar {
-    display: none; /* 스크롤바 숨기기 */
-}
-
 /* ✅ 모바일에서 갤러리 크기 최적화 */
 @media screen and (max-width: 768px) {
     .gallery-container {
@@ -321,11 +322,10 @@ body.dark-mode .contact {
 
 /* 연락처 및 소개 */
 .contact {
-    margin-top: 50px; /* 갤러리와 컨택란 간격 확보 */
+    margin-top: 30px; /* 갤러리와 컨택란 간격 확보 */
     padding: 20px;
     background: white;
 }
-
 
 .about img {
     width: 100%;
