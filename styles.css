@@ -300,37 +300,47 @@ body.dark-mode .contact {
     margin: 20px 0;
 }
 
-/* ✅ 갤러리2 스타일 (세로 비율 유지 + 사진 꽉 차게 정렬) */
+
+
+/* ✅ 갤러리2 레이아웃 (한 줄에 3개씩 정렬 + 원본 비율 유지) */
 .gallery2-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* ✅ 이미지 사이 간격 최소화 */
     padding: 20px;
     justify-content: center;
 }
 
-/* ✅ 갤러리2 이미지 비율 유지 */
+/* ✅ 갤러리2 아이템 (세로 크기 일정 + 가로는 원본 비율 유지) */
 .gallery2-item {
-    width: 100%;
-    aspect-ratio: 3 / 4; /* ✅ 3:4 비율 유지 */
+    flex: 0 1 calc(33.33% - 10px); /* ✅ 한 줄에 3개씩 배치 */
+    height: 400px; /* ✅ 세로 크기 일정 */
     overflow: hidden;
-    opacity: 0; /* ✅ 초기 숨김 (스크롤 내릴 때 나타나게) */
+    opacity: 0; /* ✅ 초기 숨김 (스크롤 시 등장 효과) */
     transform: translateY(50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* ✅ 애니메이션: 화면에 나타날 때 */
+/* ✅ 갤러리2 이미지 (가로 크기 원본 유지 + 세로 크기 일정) */
+.gallery2-item img {
+    width: auto;
+    height: 100%;
+    object-fit: cover; /* ✅ 세로 크기 맞추고 가로는 원본 비율 유지 */
+    cursor: pointer;
+}
+
+/* ✅ 스크롤 시 갤러리2 이미지 등장 효과 */
 .gallery2-item.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* ✅ 갤러리2 이미지 */
-.gallery2-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
+/* ✅ 모바일에서 한 줄에 2개씩 배치 */
+@media (max-width: 768px) {
+    .gallery2-item {
+        flex: 0 1 calc(50% - 10px); /* ✅ 한 줄에 2개씩 배치 */
+        height: 300px; /* ✅ 모바일에서 세로 크기 조정 */
+    }
 }
 
 /* ✅ 갤러리2 모달 */
