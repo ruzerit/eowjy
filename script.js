@@ -7,6 +7,15 @@ const galleryModal = document.getElementById("galleryModal");
 const galleryImage = document.getElementById("galleryImage");
 const videoElement = document.querySelector("#modalVideoCheck video");
 
+// ✅ 컴카드 & 비디오 모달 버튼 클릭 시 열기 (버튼 ID와 연결)
+document.getElementById("compCardBtn").addEventListener("click", function () {
+    openModal("modalCompCard");
+});
+
+document.getElementById("videoCheckBtn").addEventListener("click", function () {
+    openModal("modalVideoCheck");
+});
+
 // ✅ 초기 설정 (모달 숨김 및 비디오 자동 재생 방지)
 document.addEventListener("DOMContentLoaded", function () {
     [videoModal, compCardModal, galleryModal].forEach(modal => {
@@ -202,32 +211,3 @@ function openCompCardModal(imgElement) {
         }
     }
 }
-
-// ✅ 다크모드 토글 버튼 추가
-document.addEventListener("DOMContentLoaded", function () {
-    const darkModeToggle = document.createElement("button");
-    darkModeToggle.id = "darkModeToggle";
-    darkModeToggle.innerText = "🌙 다크 모드";
-    document.body.appendChild(darkModeToggle);
-
-    // ✅ 사용자의 기존 설정 확인 (localStorage)
-    if (localStorage.getItem("theme") === "dark" || 
-        (localStorage.getItem("theme") === null && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.body.classList.add("dark-mode");
-        darkModeToggle.innerText = "☀️ 라이트 모드";
-    }
-
-    // ✅ 버튼 클릭 시 다크모드 전환
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-
-        // ✅ 설정 저장 (localStorage)
-        if (document.body.classList.contains("dark-mode")) {
-            localStorage.setItem("theme", "dark");
-            darkModeToggle.innerText = "☀️ 라이트 모드";
-        } else {
-            localStorage.setItem("theme", "light");
-            darkModeToggle.innerText = "🌙 다크 모드";
-        }
-    });
-});

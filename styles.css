@@ -107,7 +107,7 @@ body.dark-mode {
     overflow: hidden; /* 확대 시 잘리는 문제 방지 */
 }
 
-/* ✅ 갤러리 컨테이너 크기 조정 */
+/* ✅ 갤러리 한 번에 3개씩 보이도록 조정 */
 .gallery-container {
     display: flex;
     overflow-x: auto;
@@ -115,22 +115,29 @@ body.dark-mode {
     scroll-behavior: smooth;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    gap: 5px; /* 이미지 간격 줄이기 */
+    gap: 10px;
     padding: 10px 0;
     align-items: center;
     justify-content: center;
     height: auto;
-    max-width: 90vw; /* 화면을 넘지 않도록 설정 */
+    max-width: 80vw; /* 화면 넘지 않도록 설정 */
 }
 
-/* ✅ 중앙 이미지 확대 효과 (겹치는 문제 해결) */
+/* ✅ 갤러리 아이템 크기 조정 */
 .gallery-item {
-    flex: 0 0 auto;
+    flex: 0 0 30%; /* 한 번에 3개씩 보이도록 설정 */
     scroll-snap-align: center;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     position: relative;
-    z-index: 1; /* 확대된 이미지가 다른 요소 위로 올라오도록 설정 */
-    max-width: 250px; /* 이미지 크기 조정 (한 번에 많은 이미지가 보이지 않도록) */
+    z-index: 1;
+    max-width: 300px; /* 이미지 크기 조정 */
+}
+
+/* ✅ 모바일에서 한 번에 2개씩 보이도록 설정 */
+@media screen and (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 45%; /* 모바일에서는 한 번에 2개 보이게 */
+    }
 }
 
 /* ✅ 확대 시 갤러리 높이 증가 */
@@ -167,15 +174,18 @@ body.dark-mode {
 }
 
 /* 커버 스타일 */
+/* ✅ 커버 이미지 16:9 비율 유지 */
 .cover {
     background: url('cover.jpg') no-repeat center/cover;
-    height: 80vh;
+    width: 100%;
+    height: 56.25vw; /* 16:9 비율 적용 */
+    max-height: 80vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     text-align: center;
     padding-bottom: 50px;
-    margin-bottom: 50px; /* 커버와 갤러리 간격 확보 */
+    margin-bottom: 50px;
 }
 
 /* ✅ 커버 사진 크기 조정 */
