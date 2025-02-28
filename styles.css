@@ -108,7 +108,7 @@ body {
 }
 
 /* 버튼 기본 스타일 */
-.btn {
+.button {
     display: inline-block;
     padding: 12px 24px;
     font-size: 16px;
@@ -124,20 +124,20 @@ body {
 }
 
 /* 버튼 호버 효과 */
-.btn:hover, .cover .btn:hover {
+.button:hover, .cover .btn:hover {
     transform: scale(1.05);
     background: rgba(255, 255, 255, 0.5);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* 버튼 클릭 효과 */
-.btn:active {
+.button:active {
     transform: scale(0.98); /* 클릭 시 살짝 눌리는 효과 */
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* 버튼 키보드 포커스 효과 */
-.btn:focus {
+.button:focus {
     outline: 2px solid rgba(255, 255, 255, 0.6); /* 대비를 위한 포커스 스타일 */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
