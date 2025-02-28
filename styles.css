@@ -320,7 +320,8 @@ body.dark-mode .contact {
 /* ✅ 갤러리2 아이템 (세로 크기 일정 + 가로는 원본 비율 유지) */
 .gallery2-item {
     flex: 0 0 calc(33.33%); /* ✅ 한 줄에 3개씩 배치 */
-    height: 570px; /* ✅ 세로 크기 일정 */
+    display: flex;
+    align-items: center;
     overflow: hidden;
     opacity: 0; /* ✅ 초기 숨김 (스크롤 시 등장 효과) */
     transform: translateY(50px);
@@ -330,8 +331,8 @@ body.dark-mode .contact {
 /* ✅ 갤러리2 이미지 (가로 크기 원본 유지 + 세로 크기 일정) */
 .gallery2-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* ✅ 세로 크기 맞추고 가로는 원본 비율 유지 */
+    height: auto;
+    object-fit: contain; /* ✅ 세로 크기 맞추고 가로는 원본 비율 유지 */
     cursor: pointer;
 }
 
@@ -345,7 +346,6 @@ body.dark-mode .contact {
 @media (max-width: 768px) {
     .gallery2-item {
         flex: 0 0 50%; /* ✅ 한 줄에 2개씩 배치 */
-        height: 350px; /* ✅ 모바일에서 세로 크기 조정 */
     }
 }
 
