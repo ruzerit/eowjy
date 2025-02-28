@@ -123,25 +123,29 @@ galleryContainer.addEventListener("touchend", () => {
     isDown = false;
 });
 
-// ✅ 모달 열기 & 닫기 기능
-function openModal(modalId) {
-    let modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "flex";
+// ✅ 갤러리1 모달 열기
+function openGalleryModal(imgElement) {
+    let galleryModal = document.getElementById("galleryModal");
+    let galleryImage = document.getElementById("galleryImage");
+
+    if (galleryModal && galleryImage) {
+        galleryImage.src = imgElement.src;
+        galleryModal.style.display = "flex";
         setTimeout(() => {
-            modal.style.opacity = "1";
-            modal.style.visibility = "visible";
+            galleryModal.style.opacity = "1";
+            galleryModal.style.visibility = "visible";
         }, 50);
     }
 }
 
-function closeModal(modalId) {
-    let modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.opacity = "0";
-        modal.style.visibility = "hidden";
+// ✅ 갤러리1 모달 닫기
+function closeGalleryModal() {
+    let galleryModal = document.getElementById("galleryModal");
+    if (galleryModal) {
+        galleryModal.style.opacity = "0";
+        galleryModal.style.visibility = "hidden";
         setTimeout(() => {
-            modal.style.display = "none";
+            galleryModal.style.display = "none";
         }, 300);
     }
 }
@@ -149,7 +153,7 @@ function closeModal(modalId) {
 // ✅ ESC 키로 열린 모달 닫기
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-        ["modalVideoCheck", "modalCompCard", "galleryModal","Gallery2Modal"].forEach(modalId => {
+        ["modalVideoCheck", "modalCompCard", "galleryModal","gallery2Modal"].forEach(modalId => {
             let modal = document.getElementById(modalId);
             if (modal && modal.style.display === "flex") {
                 closeModal(modalId);
@@ -160,7 +164,7 @@ document.addEventListener("keydown", function (event) {
 
 // ✅ 모달 바깥 클릭 시 닫기
 document.addEventListener("DOMContentLoaded", function () {
-    ["modalVideoCheck", "modalCompCard", "galleryModal","Gallery2Modal"].forEach(modalId => {
+    ["modalVideoCheck", "modalCompCard", "galleryModal","gallery2Modal"].forEach(modalId => {
         let modal = document.getElementById(modalId);
         if (modal) {
             modal.addEventListener("click", function (event) {
