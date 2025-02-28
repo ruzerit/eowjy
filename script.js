@@ -1,27 +1,57 @@
-// 모달 초기 상태 숨기기 (기존 코드에서 display를 "none"으로 설정)
+// 페이지 로드 시 비디오 모달 숨기기 (완전히 안 보이도록)
 document.addEventListener("DOMContentLoaded", function () {
     let videoModal = document.getElementById("modalVideoCheck");
     let compCardModal = document.getElementById("modalCompCard");
 
-    if (videoModal) videoModal.style.display = "none";
-    if (compCardModal) compCardModal.style.display = "none";
+    if (videoModal) {
+        videoModal.style.display = "none";
+        videoModal.style.opacity = "0";
+    }
+    if (compCardModal) {
+        compCardModal.style.display = "none";
+        compCardModal.style.opacity = "0";
+    }
 });
 
-// 모달 닫기 함수 수정 (존재 여부 체크 추가)
+// 모달 닫기 함수 수정 (부드럽게 사라지도록)
 function closeModal(id) {
     let modal = document.getElementById(id);
-    if (modal) modal.style.display = "none";
+    if (modal) {
+        modal.style.opacity = "0";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300); // 0.3초 후 완전히 숨김
+    }
 }
 
-// 모달 열기 이벤트 수정 (존재 여부 체크 추가)
-document.getElementById('compCardBtn')?.addEventListener('click', function () {
-    let compCardModal = document.getElementById("modalCompCard");
-    if (compCardModal) compCardModal.style.display = 'flex';
-});
-
+// 모달 열기 이벤트 수정 (부드럽게 나타나도록)
 document.getElementById('videoCheckBtn')?.addEventListener('click', function () {
     let videoModal = document.getElementById("modalVideoCheck");
-    if (videoModal) videoModal.style.display = 'flex';
+    if (videoModal) {
+        videoModal.style.display = 'flex';
+        setTimeout(() => {
+            videoModal.style.opacity = "1";
+        }, 50);
+    }
+});
+
+document.getElementById('compCardBtn')?.addEventListener('click', function () {
+    let compCardModal = document.getElementById("modalCompCard");
+    if (compCardModal) {
+        compCardModal.style.display = 'flex';
+        setTimeout(() => {
+            compCardModal.style.opacity = "1";
+        }, 50);
+    }
+});
+
+// 비디오 자동 재생 방지 (autoplay 속성이 있는 경우 제거)
+document.addEventListener("DOMContentLoaded", function () {
+    let videoElement = document.querySelector("#modalVideoCheck video");
+    if (videoElement) {
+        videoElement.removeAttribute("autoplay");
+        videoElement.pause(); // 자동 재생 방지
+    }
 });
 
 // 갤러리 가로 슬라이드 기능 추가 (터치 및 마우스 드래그 지원)
