@@ -108,6 +108,12 @@ body {
 }
 
 /* 버튼 기본 스타일 */
+button.btn {
+    all: unset; /* 기본 버튼 스타일 제거 */
+    display: inline-block;
+    cursor: pointer;
+}
+
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -132,8 +138,8 @@ body {
 
 /* 버튼 클릭 효과 */
 .btn:active {
-    transform: scale(0.98); /* 클릭 시 살짝 눌리는 효과 */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    transform: scale(0.99); /* 클릭 시 부드러운 눌림 효과 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* 버튼 키보드 포커스 효과 */
