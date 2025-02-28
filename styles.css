@@ -205,6 +205,19 @@ body.dark-mode {
     object-fit: cover; /* ✅ 이미지가 중앙 정렬 및 꽉 차게 보이도록 설정 */
 }
 
+/* ✅ 커버 제목 위치 조정 (하단부로 이동) */
+.cover-content h1 {
+    font-size: 28px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 20px; /* 하단에 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
 /* ✅ 모바일에서 커버 이미지 비율 조정 */
 @media (max-width: 768px) {
     .cover {
@@ -213,7 +226,7 @@ body.dark-mode {
         background-position: 50% 50%;
     }
 }
-    .cover h1 {
+    .cover-content h1 {
         font-size: 32px;
         font-weight: 300;
         color: #fff;
@@ -229,11 +242,6 @@ body.dark-mode {
     100% { opacity: 1; transform: translateY(0); }
 }
     
-.cover h1 {
-    color: white;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
 
 /* 버튼 기본 스타일 */
 button.btn {
@@ -245,11 +253,11 @@ button.btn {
 /* ✅ 버튼 기본 스타일 */
 .btn {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 14px 28px;
+    font-size: 18px;
     font-weight: 500;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */

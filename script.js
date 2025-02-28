@@ -18,6 +18,13 @@ document.getElementById("videoCheckBtn").addEventListener("click", function () {
 
 // ✅ 초기 설정 (모달 숨김 및 비디오 자동 재생 방지)
 document.addEventListener("DOMContentLoaded", function () {
+    let initialIndex = 1; // 두 번째 이미지 (0부터 시작)
+    let containerCenter = galleryContainer.clientWidth / 2;
+    let selectedItem = galleryItems[initialIndex];
+
+    galleryContainer.scrollLeft = selectedItem.offsetLeft - containerCenter + selectedItem.offsetWidth / 2;
+    updateCenterImage();
+
     [videoModal, compCardModal, galleryModal].forEach(modal => {
         if (modal) {
             modal.style.display = "none";
@@ -31,11 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         videoElement.pause();
     }
 
-    // ✅ 갤러리 중앙 정렬 적용
-    updateCenterImage();
-});
-
-// ✅ 갤러리 중앙 정렬 및 강조 효과 적용
+// ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 function updateCenterImage() {
     let containerCenter = galleryContainer.clientWidth / 2;
     let closestIndex = 0;
@@ -63,38 +66,6 @@ function updateCenterImage() {
         behavior: "smooth"
     });
 }
-
-// ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
-galleryContainer.addEventListener("scroll", updateCenterImage);
-
-// ✅ 갤러리 슬라이드 기능 정상 작동하도록 수정
-let isDown = false;
-let startX, startScrollLeft;
-
-galleryContainer.addEventListener("mousedown", (e) => {
-    isDown = true;
-    galleryContainer.classList.add("active");
-    startX = e.pageX - galleryContainer.offsetLeft;
-    startScrollLeft = galleryContainer.scrollLeft;
-});
-
-galleryContainer.addEventListener("mouseleave", () => {
-    isDown = false;
-    galleryContainer.classList.remove("active");
-});
-
-galleryContainer.addEventListener("mouseup", () => {
-    isDown = false;
-    galleryContainer.classList.remove("active");
-});
-
-galleryContainer.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    let x = e.pageX - galleryContainer.offsetLeft;
-    let walk = (x - startX) * 2; // ✅ 이동 속도 조절
-    galleryContainer.scrollLeft = startScrollLeft - walk;
-});
 
 // ✅ 모바일 터치 이벤트 추가
 galleryContainer.addEventListener("touchstart", (e) => {
