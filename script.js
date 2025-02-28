@@ -59,11 +59,6 @@ function updateCenterImage() {
         }
     });
 
-    // ✅ 강조 효과 적용 (중앙에 온 이미지만 강조)
-    galleryItems.forEach((item, index) => {
-        item.classList.toggle("active", index === closestIndex);
-    });
-
     // ✅ 자동 중앙 정렬
     let selectedItem = galleryItems[closestIndex];
     galleryContainer.scrollTo({
