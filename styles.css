@@ -198,14 +198,17 @@ body.dark-mode {
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: none; /* 배경 제거 */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none; /* 그림자 제거 */
 }
 
+/* ✅ 모달 내 이미지 & 비디오의 크기 최적화 */
 .modal img, .modal video {
     max-width: 90%;
     max-height: 80vh;
+    object-fit: contain; /* 원본 비율 유지 */
 }
 
 .close {
