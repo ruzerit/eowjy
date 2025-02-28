@@ -29,20 +29,23 @@ body {
 }
 
 /* ✅ 커버 제목 스타일 수정 */
-.cover-content h1 {
-    font-size: 34px;
-    font-weight: 500;
+.cover h1 {
+    font-size: 32px;
+    font-weight: 300;
     position: absolute;
-    top: 65%; /* 커버 안에서 아래쪽 배치 */
+    top: 65%;
     left: 50%;
-    transform: translateX(-50%);
-    color: white;
+    transform: translateX(-10px);
+    color: #fff;
     background: rgba(0, 0, 0, 0.5); /* 가독성을 위해 반투명 배경 추가 */
     padding: 10px 20px;
+    margin-bottom: 15px;
     border-radius: 10px;
+    opacity: 0;
     text-align: center;
-    display: block; /* 제목이 안 보이는 문제 해결 */
-    z-index: 20; /* 다른 요소 위에 오도록 */
+    display: block; 
+    animation: fadeInUp 0.8s ease-out forwards;
+    z-index: 20; /* 다른 요소 위에 오도록 */ 
 }
 
 /* ✅ 모바일에서 커버 이미지 비율 조정 */
@@ -122,10 +125,6 @@ button.btn {
 }
 
 .cover .btn {
-    padding: 18px 36px; /* 버튼 크기 조정 */
-    font-size: 20px;
-    font-weight: 600;
-    border-radius: 30px;
     max-width: 80%; /* 너무 커지지 않도록 제한 */
 }
 
