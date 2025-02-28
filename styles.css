@@ -29,7 +29,7 @@ body {
 }
 
 /* ✅ 커버 제목 스타일 수정 */
-.cover h1 {
+.cover-content h1 {
     font-size: 32px;
     font-weight: 300;
     position: absolute;
@@ -64,6 +64,7 @@ body {
         opacity: 0;
         transform: translateY(-10px);
         animation: fadeInUp 0.8s ease-out forwards;
+        z-index: 20;
     }
 }
 
@@ -138,23 +139,6 @@ button.btn {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-/* ✅ 다크 모드 스타일 (자동 감지) */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #ffffff;
-    }
-
-    .btn {
-        background: rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-    }
-
-    .modal {
-        background: rgba(0, 0, 0, 0.9);
-    }
-}
-
 /* ✅ 다크모드가 활성화될 때 적용되는 클래스 */
 body.dark-mode {
     background-color: #121212;
@@ -171,9 +155,30 @@ body.dark-mode {
 }
 
 body.dark-mode .contact {
-    background: #1e1e1e;
-    color: #bb86fc; /* 다크모드에서 링크 색상 변경 */
+    background-color: #121212;
+    color: #ffffff; /* 다크모드에서 링크 색상 변경 */
 }
+
+/* ✅ 다크 모드 스타일 (자동 감지) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    .btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+
+    .modal {
+        background: rgba(0, 0, 0, 0.9);
+    }
+    
+    body.dark-mode .contact {
+        background-color: #121212;
+        color: #ffffff; /* 다크모드에서 링크 색상 변경 */
+    }
 
 #darkModeToggle {
     position: fixed;
