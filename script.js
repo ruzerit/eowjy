@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
+// ✅ 중앙에 온 사진 강조 및 자동 정렬 유지
 function updateCenterImage() {
     let containerCenter = galleryContainer.clientWidth / 2;
     let closestIndex = 0;
@@ -59,7 +59,7 @@ function updateCenterImage() {
         }
     });
 
-    // ✅ 강조 효과 적용
+    // ✅ 강조 효과 적용 (중앙에 온 이미지만 강조)
     galleryItems.forEach((item, index) => {
         item.classList.toggle("active", index === closestIndex);
     });

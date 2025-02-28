@@ -8,6 +8,131 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* 커버 스타일 */
+.cover {
+    width: 100%;
+    height: 56.25vw; /* 16:9 비율 적용 */
+    max-height: 80vh;
+    display: flex;
+    align-items: center; /* ✅ 중앙 정렬 */
+    justify-content: center; /* ✅ 중앙 정렬 */
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background: url('desktop-cover.JPG') no-repeat center/cover;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ✅ 이미지가 중앙 정렬 및 꽉 차게 보이도록 설정 */
+}
+
+/* ✅ 커버 제목 위치 조정 (하단부로 이동) */
+.cover-content h1 {
+    font-size: 28px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 60px; /* 하단에 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+/* ✅ 모바일에서 커버 이미지 비율 조정 */
+@media (max-width: 768px) {
+    .cover {
+        height: 50vh; 
+        max-height: 450px;
+        background-position: 50% 50%;
+    }
+}
+    .cover-content h1 {
+        font-size: 32px;
+        font-weight: 300;
+        color: #fff;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-10px);
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+}
+
+@keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+    
+
+/* 버튼 기본 스타일 */
+button.btn {
+    all: unset; /* 기본 버튼 스타일 제거 */
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ✅ 버튼 기본 스타일 */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 버튼 기본 및 커버 버튼 공통 호버 효과 */
+.btn:hover, .cover .btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* 호버 시 더 강한 그림자 */
+}
+
+.btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* 눌릴 때 그림자 작게 */
+}
+
+/* ✅ 유도 버튼 스타일 수정 */
+.cover .buttons {
+    position: absolute;
+    bottom: 20px; /* 하단에 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+.cover .btn {
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.3); 
+    color: #fff;
+}
+
+.cover .btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.btn:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
 /* ✅ 다크 모드 스타일 (자동 감지) */
 @media (prefers-color-scheme: dark) {
     body {
@@ -116,15 +241,14 @@ body.dark-mode {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     gap: 10px;
-    padding: 10px 0;
+    padding: 0 5vw;
     align-items: center;
     justify-content: center;
     height: auto;
-    max-width: 80vw;
+    max-width: 100vw;
 }
 
 /* ✅ 갤러리 아이템 크기 조정 */
-/* ✅ 갤러리 아이템 크기 조정 (3:4 비율 유지) */
 .gallery-item {
     flex: 0 0 30%; /* 한 번에 3개씩 보이도록 설정 */
     scroll-snap-align: center;
@@ -185,121 +309,17 @@ body.dark-mode {
     }
 }
 
-/* 커버 스타일 */
-.cover {
-    width: 100%;
-    height: 56.25vw; /* 16:9 비율 적용 */
-    max-height: 80vh;
-    display: flex;
-    align-items: center; /* ✅ 중앙 정렬 */
-    justify-content: center; /* ✅ 중앙 정렬 */
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    background: url('desktop-cover.JPG') no-repeat center/cover;
-}
-
-.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ✅ 이미지가 중앙 정렬 및 꽉 차게 보이도록 설정 */
-}
-
-/* ✅ 커버 제목 위치 조정 (하단부로 이동) */
-.cover-content h1 {
-    font-size: 28px;
-    font-weight: 400;
-    position: absolute;
-    bottom: 20px; /* 하단에 배치 */
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    text-align: center;
-    margin: 0;
-}
-
-/* ✅ 모바일에서 커버 이미지 비율 조정 */
-@media (max-width: 768px) {
-    .cover {
-        height: 50vh; 
-        max-height: 450px;
-        background-position: 50% 50%;
-    }
-}
-    .cover-content h1 {
-        font-size: 32px;
-        font-weight: 300;
-        color: #fff;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(-10px);
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-}
-
-@keyframes fadeInUp {
-        0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-    
-
-/* 버튼 기본 스타일 */
-button.btn {
-    all: unset; /* 기본 버튼 스타일 제거 */
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* ✅ 버튼 기본 스타일 */
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
-    background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */
-    color: #fff;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* 버튼 기본 및 커버 버튼 공통 호버 효과 */
-.btn:hover, .cover .btn:hover {
-    transform: scale(1.05);
-}
-
-.btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* 호버 시 더 강한 그림자 */
-}
-
-.btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* 눌릴 때 그림자 작게 */
-}
-
-.cover .btn {
-    background: rgba(255, 255, 255, 0.3); /* 어두운 배경에 대비 */
-    color: #fff;
-}
-
-.cover .btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.btn:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.6); /* 대비를 위한 포커스 스타일 */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-}
-
 /* 연락처 및 소개 */
 .contact {
     margin-top: 50px; /* 갤러리와 컨택란 간격 확보 */
     padding: 20px;
     background: white;
+}
+
+/* ✅ 컨택 창 다크모드 지원 */
+body.dark-mode .contact {
+    background: #1e1e1e;
+    color: #ffffff;
 }
 
 .about img {
