@@ -4,8 +4,59 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #000000;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ✅ 다크 모드 스타일 (자동 감지) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    .btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+
+    .modal {
+        background: rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* ✅ 다크모드가 활성화될 때 적용되는 클래스 */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.dark-mode .modal {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* ✅ 다크모드 전환 버튼 스타일 */
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    background: #555;
+}
 /* 모달 기본 숨김 */
 .modal {
     display: none;
