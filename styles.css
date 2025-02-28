@@ -74,69 +74,65 @@ body {
 }
     
 
-/* 버튼 기본 스타일 */
+/* ✅ 버튼 기본 스타일 */
 button.btn {
     all: unset; /* 기본 버튼 스타일 제거 */
     display: inline-block;
     cursor: pointer;
 }
 
-/* ✅ 버튼 기본 스타일 */
+/* ✅ 버튼 디자인 */
 .btn {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: 16px 32px; /* 크기 키움 */
+    font-size: 18px;
+    font-weight: 600;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 30px; /* 라운드 버튼 */
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */
     color: #fff;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-/* 버튼 기본 및 커버 버튼 공통 호버 효과 */
-.btn:hover, .cover .btn:hover {
-    transform: scale(1.05);
-}
-
+/* ✅ 버튼 호버 효과 */
 .btn:hover {
+    transform: scale(1.05);
     background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* 호버 시 더 강한 그림자 */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* ✅ 버튼 클릭 시 효과 */
 .btn:active {
     transform: scale(0.97);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* 눌릴 때 그림자 작게 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* ✅ 유도 버튼을 커버 안쪽 하단에 위치하도록 수정 */
+/* ✅ 버튼 포커스 스타일 */
+.btn:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* ✅ 유도 버튼을 커버 안쪽 하단에 위치 */
 .cover .buttons {
     position: absolute;
-    bottom: 8%; /* 커버 하단보다 조금 위 */
+    bottom: 10%; /* 커버 안쪽 하단 배치 */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
-    z-index: 10; /* 다른 요소 위에 위치 */
+    z-index: 10;
 }
 
+/* ✅ 커버 버튼 (유도 버튼) */
 .cover .btn {
-    max-width: 80%; /* 너무 커지지 않도록 제한 */
-}
-
-
-.cover .btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.btn:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    max-width: 80%; /* 버튼이 너무 커지지 않도록 제한 */
 }
 
 /* ✅ 다크모드가 활성화될 때 적용되는 클래스 */
