@@ -120,17 +120,18 @@ body.dark-mode {
     align-items: center;
     justify-content: center;
     height: auto;
-    max-width: 80vw; /* 화면 넘지 않도록 설정 */
+    max-width: 80vw;
 }
 
 /* ✅ 갤러리 아이템 크기 조정 */
 .gallery-item {
-    flex: 0 0 30%; /* 한 번에 3개씩 보이도록 설정 */
+    flex: 0 0 30%;
     scroll-snap-align: center;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     position: relative;
     z-index: 1;
-    max-width: 300px; /* 이미지 크기 조정 */
+    max-width: 280px;
+    overflow: hidden; /* ✅ 이미지가 원본 크기로 겹치는 문제 방지 */
 }
 
 /* ✅ 모바일에서 한 번에 2개씩 보이도록 설정 */
@@ -140,17 +141,16 @@ body.dark-mode {
     }
 }
 
-/* ✅ 확대 시 갤러리 높이 증가 */
 .gallery-item.active {
-    transform: scale(1.4);
+    transform: scale(1.2);
     opacity: 1;
-    z-index: 10; /* 확대된 이미지가 최상위로 올라오도록 설정 */
+    z-index: 10;
 }
 
 /* ✅ 비활성화된 갤러리 아이템 */
 .gallery-item:not(.active) {
-    transform: scale(0.8);
-    opacity: 0.5;
+    transform: scale(0.85);
+    opacity: 0.6;
 }
 
 /* ✅ 슬라이드 정상 작동을 위한 설정 */
@@ -174,28 +174,26 @@ body.dark-mode {
 }
 
 /* 커버 스타일 */
-/* ✅ 커버 이미지 16:9 비율 유지 */
 .cover {
-    background: url('cover.jpg') no-repeat center/cover;
     width: 100%;
     height: 56.25vw; /* 16:9 비율 적용 */
     max-height: 80vh;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center; /* ✅ 중앙 정렬 */
+    justify-content: center; /* ✅ 중앙 정렬 */
     text-align: center;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
+    padding: 0;
+    margin: 0;
+    background: url('desktop-cover.JPG') no-repeat center/cover;
 }
 
-/* ✅ 커버 사진 크기 조정 */
 .cover img {
     width: 100%;
-    max-height: 60vh; /* 기존보다 크기 줄이기 */
-    object-fit: cover; /* 비율 유지하면서 꽉 차게 */
+    height: 100%;
+    object-fit: cover; /* ✅ 이미지가 중앙 정렬 및 꽉 차게 보이도록 설정 */
 }
 
-/* 모바일에서 커버 이미지 더 작게 조정 */
+/* ✅ 모바일에서 커버 이미지 비율 조정 */
 @media (max-width: 768px) {
     .cover {
         height: 50vh; 
