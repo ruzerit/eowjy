@@ -149,7 +149,7 @@ function closeModal(modalId) {
 // ✅ ESC 키로 열린 모달 닫기
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-        ["modalVideoCheck", "modalCompCard", "galleryModal"].forEach(modalId => {
+        ["modalVideoCheck", "modalCompCard", "galleryModal","Gallery2Modal"].forEach(modalId => {
             let modal = document.getElementById(modalId);
             if (modal && modal.style.display === "flex") {
                 closeModal(modalId);
@@ -160,7 +160,7 @@ document.addEventListener("keydown", function (event) {
 
 // ✅ 모달 바깥 클릭 시 닫기
 document.addEventListener("DOMContentLoaded", function () {
-    ["modalVideoCheck", "modalCompCard", "galleryModal"].forEach(modalId => {
+    ["modalVideoCheck", "modalCompCard", "galleryModal","Gallery2Modal"].forEach(modalId => {
         let modal = document.getElementById(modalId);
         if (modal) {
             modal.addEventListener("click", function (event) {

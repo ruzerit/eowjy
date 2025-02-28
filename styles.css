@@ -320,7 +320,7 @@ body.dark-mode .contact {
 /* ✅ 갤러리2 아이템 (세로 크기 일정 + 가로는 원본 비율 유지) */
 .gallery2-item {
     flex: 0 0 calc(33.33%); /* ✅ 한 줄에 3개씩 배치 */
-    height: 450px; /* ✅ 세로 크기 일정 */
+    height: 570px; /* ✅ 세로 크기 일정 */
     overflow: hidden;
     opacity: 0; /* ✅ 초기 숨김 (스크롤 시 등장 효과) */
     transform: translateY(50px);
