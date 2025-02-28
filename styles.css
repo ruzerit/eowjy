@@ -84,20 +84,35 @@ body {
 
 /* ✅ 확대 시 갤러리 높이 증가 */
 .gallery-item.active {
-    transform: scale(1.2);
+    transform: scale(1.4);
     opacity: 1;
     z-index: 10; /* 확대된 이미지가 최상위로 올라오도록 설정 */
 }
 
 /* ✅ 비활성화된 갤러리 아이템 */
 .gallery-item:not(.active) {
-    transform: scale(0.9);
-    opacity: 0.6;
+    transform: scale(0.8);
+    opacity: 0.5;
 }
 
 /* ✅ 슬라이드 정상 작동을 위한 설정 */
 .gallery-container::-webkit-scrollbar {
     display: none; /* 스크롤바 숨기기 */
+}
+
+/* ✅ 모바일에서 갤러리 크기 최적화 */
+@media screen and (max-width: 768px) {
+    .gallery-container {
+        max-width: 100vw; /* 모바일에서 꽉 차게 */
+    }
+
+    .gallery-item {
+        max-width: 220px; /* 모바일에서 이미지 크기 증가 */
+    }
+
+    .gallery-item.active {
+        transform: scale(1.5); /* 모바일에서 더 크게 확대 */
+    }
 }
 
 /* 커버 스타일 */
@@ -131,17 +146,10 @@ body {
         font-size: 32px;
         font-weight: 300;
         color: #fff;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         opacity: 0;
         transform: translateY(-10px);
         animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-/* 📌 모바일에서 타이틀 폰트 크기 더 작게 조정 */
-@media (max-width: 768px) {
-    .cover h1 {
-        font-size: 22px;
-        margin-bottom: 20px;
     }
 }
 
