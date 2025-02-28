@@ -6,34 +6,11 @@ body {
     text-align: center;
 }
 
-.cover {
-    background: url('cover.jpg') no-repeat center/cover;
-    height: 80vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    text-align: center;
-    padding-bottom: 50px;
-}
-
-.cover h1 {
-    color: white;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.buttons button {
-    background: rgba(255, 255, 255, 0.5);
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-}
-
+/* 모달 기본 숨김 */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -64,20 +41,23 @@ body {
     color: white;
 }
 
+/* 갤러리 슬라이드 스타일 */
 .gallery-container {
     display: flex;
-    overflow-x: scroll;
-    padding: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
 }
 
 .gallery-item {
     flex: 0 0 auto;
     margin: 10px;
+    cursor: pointer;
 }
 
 .gallery-item img {
     height: 400px;
-    cursor: pointer;
     transition: transform 0.3s;
 }
 
@@ -85,6 +65,37 @@ body {
     transform: scale(1.1);
 }
 
+/* 마우스로 드래그해서 넘기기 가능하도록 설정 */
+.gallery-container::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨김 */
+}
+
+/* 커버 스타일 */
+.cover {
+    background: url('cover.jpg') no-repeat center/cover;
+    height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.cover h1 {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.buttons button {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* 연락처 및 소개 */
 .contact {
     padding: 20px;
     background: white;

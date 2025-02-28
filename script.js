@@ -1,24 +1,51 @@
+// 모달 초기 상태 숨기기
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("modalCompCard").style.display = "none";
+    document.getElementById("modalVideoCheck").style.display = "none";
+});
+
+// 모달 닫기 함수
 function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
+    document.getElementById(id).style.display = "none";
 }
 
-document.getElementById('compCardBtn').addEventListener('click', function() {
+// 모달 열기 이벤트 추가
+document.getElementById('compCardBtn').addEventListener('click', function () {
     document.getElementById('modalCompCard').style.display = 'flex';
 });
 
-document.getElementById('videoCheckBtn').addEventListener('click', function() {
+document.getElementById('videoCheckBtn').addEventListener('click', function () {
     document.getElementById('modalVideoCheck').style.display = 'flex';
 });
 
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', function() {
-        let modal = document.createElement('div');
-        modal.classList.add('modal');
-        modal.innerHTML = `<div class="modal-content">
-                            <span class="close" onclick="this.parentElement.parentElement.remove()">&times;</span>
-                            <img src="${this.src}" alt="Portfolio Image">
-                           </div>`;
-        document.body.appendChild(modal);
-        modal.style.display = 'flex';
-    });
+// 갤러리 가로 슬라이드 기능 추가
+const galleryContainer = document.querySelector('.gallery-container');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+galleryContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    galleryContainer.classList.add('active');
+    startX = e.pageX - galleryContainer.offsetLeft;
+    scrollLeft = galleryContainer.scrollLeft;
+});
+
+galleryContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    galleryContainer.classList.remove('active');
+});
+
+galleryContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    galleryContainer.classList.remove('active');
+});
+
+galleryContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - galleryContainer.offsetLeft;
+    const walk = (x - startX) * 2; // 스크롤 속도 조절
+    galleryContainer.scrollLeft = scrollLeft - walk;
 });
