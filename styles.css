@@ -42,17 +42,23 @@ body {
 }
 
 /* 갤러리 슬라이드 스타일 */
+.gallery-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
 .gallery-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
+    gap: 10px;
+    padding: 10px;
 }
 
 .gallery-item {
     flex: 0 0 auto;
-    margin: 10px;
     cursor: pointer;
 }
 
