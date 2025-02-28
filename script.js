@@ -59,19 +59,7 @@ function updateCenterImage() {
 // 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 galleryContainer.addEventListener("scroll", updateCenterImage);
 
-// 모달 닫기 함수 (더 확실하게 적용)
-function closeModal(id) {
-    let modal = document.getElementById(id);
-    if (modal) {
-        modal.style.opacity = "0";
-        modal.style.visibility = "hidden";
-        setTimeout(() => {
-            modal.style.display = "none";
-        }, 300); // 강제 숨김 적용
-    }
-}
-
-// 모달 열기 이벤트 수정
+// 모달 열기 이벤트
 document.getElementById("videoCheckBtn")?.addEventListener("click", function () {
     if (videoModal) {
         videoModal.style.display = "flex";
@@ -132,4 +120,46 @@ galleryContainer.addEventListener("touchmove", (e) => {
 
 galleryContainer.addEventListener("touchend", () => {
     isDown = false;
+});
+
+// 모달 닫기 함수 (더 확실하게 적용)
+function closeModal(id) {
+    let modal = document.getElementById(id);
+    if (modal) {
+        modal.style.opacity = "0";
+        modal.style.visibility = "hidden";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300); // 강제 숨김 적용
+    }
+}
+
+// ✅ ESC 키를 누르면 열린 모달만 닫기
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        if (videoModal && videoModal.style.display === "flex") {
+            closeModal("modalVideoCheck");
+        } else if (compCardModal && compCardModal.style.display === "flex") {
+            closeModal("modalCompCard");
+        }
+    }
+});
+
+// ✅ 모달 바깥 클릭 시 닫기 기능 추가
+document.addEventListener("DOMContentLoaded", function () {
+    if (videoModal) {
+        videoModal.addEventListener("click", function (event) {
+            if (event.target === this) {
+                closeModal("modalVideoCheck");
+            }
+        });
+    }
+
+    if (compCardModal) {
+        compCardModal.addEventListener("click", function (event) {
+            if (event.target === this) {
+                closeModal("modalCompCard");
+            }
+        });
+    }
 });
