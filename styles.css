@@ -1,136 +1,111 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: #000000;
-    transition: background 0.3s ease, color 0.3s ease;
+    font-family: 'Helvetica', Arial, sans-serif; 
+    margin: 0;    
+    padding: 0; 
+    background: #f8f8f8; 
+    color: #333; 
+    transition: background 0.5s, color 0.5s; }
+        .container { width: 80%; margin: auto; text-align: center; 
 }
 
-/* 커버 스타일 */
 .cover {
+    position: relative;
     width: 100%;
     height: 56.25vw; /* 16:9 비율 적용 */
     max-height: 80vh;
     display: flex;
-    align-items: center; /* ✅ 중앙 정렬 */
-    justify-content: center; /* ✅ 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
     text-align: center;
-    padding: 0;
-    margin: 0;
-    background: url('desktop-cover.JPG') no-repeat center/cover;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.cover picture {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -2;
 }
 
 .cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ✅ 이미지가 중앙 정렬 및 꽉 차게 보이도록 설정 */
+    object-fit: cover;
 }
 
-/* ✅ 커버 제목 스타일 수정 */
-.cover-content h1 {
+.cover-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+ .cover {
+    height: 50vh; 
+    max-height: 450px;
+    background-position: 50% 50%;
+ }
+}
+
+.cover h1 {
     font-size: 32px;
     font-weight: 300;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translateX(-50%);
     color: #fff;
-    background: rgba(0, 0, 0, 0.5); /* 가독성을 위해 반투명 배경 추가 */
-    padding: 10px 20px;
     margin-bottom: 15px;
-    border-radius: 10px;
     opacity: 0;
-    text-align: center;
-    display: block; 
+    transform: translateY(-10px);
     animation: fadeInUp 0.8s ease-out forwards;
-    z-index: 20; /* 다른 요소 위에 오도록 */
 }
 
-/* ✅ 모바일에서 커버 제목 조정 */
 @media (max-width: 768px) {
-    .cover-content h1 {
-        font-size: 28px; /* 모바일에서 글자 크기 조정 */
-        top: 60%; /* 위치 조정 */
-        padding: 8px 16px;
-    }
-}
-
-/* ✅ 모바일에서 커버 이미지 비율 조정 */
-@media (max-width: 768px) {
-    .cover {
-        height: 50vh; 
-        max-height: 450px;
-        background-position: 50% 50%;
-    }
+ .cover h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+ }
 }
 
 @keyframes fadeInUp {
-        0% { opacity: 0; transform: translateY(-10px); }
+    0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-    
 
-/* ✅ 버튼 기본 스타일 */
-button.btn {
-    all: unset; /* 기본 버튼 스타일 제거 */
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* ✅ 버튼 디자인 */
+/* 버튼 기본 스타일 */
 .btn {
     display: inline-block;
-    padding: 16px 32px; /* 크기 키움 */
-    font-size: 18px;
-    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
     text-decoration: none;
-    border-radius: 30px; /* 라운드 버튼 */
-    cursor: pointer;
+    border-radius: 5px;
     transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
-    background: rgba(255, 255, 255, 0.3); /* 기본적으로 반투명한 흰색 */
+    background: rgba(255, 255, 255, 0.3); /* 어두운 배경 */
     color: #fff;
     border: none;
+
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
 }
 
-/* ✅ 버튼 호버 효과 */
-.btn:hover {
+.btn:hover, .cover .btn:hover {
     transform: scale(1.05);
+}
+
+        /* 버튼 호버 시 색상 변경 */
+.btn:hover {
     background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); 
 }
 
-/* ✅ 버튼 클릭 시 효과 */
-.btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-/* ✅ 버튼 포커스 스타일 */
-.btn:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-}
-
-/* ✅ 유도 버튼을 커버 안쪽 하단에 위치 */
-.cover .buttons {
-    position: absolute;
-    bottom: 10%; /* 커버 안쪽 하단 배치 */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-    z-index: 10;
-}
-
-/* ✅ 커버 버튼 (유도 버튼) */
 .cover .btn {
-    max-width: 80%; /* 버튼이 너무 커지지 않도록 제한 */
+    background: rgba(255, 255, 255, 0.3); /* 어두운 배경 */
+    color: #fff;
+}
+
+.cover .btn:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* ✅ 다크모드가 활성화될 때 적용되는 클래스 */
