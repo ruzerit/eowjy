@@ -58,40 +58,49 @@ function updateCenterImage() {
 // ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 galleryContainer.addEventListener("scroll", updateCenterImage);
 
-// ✅ 마우스 드래그 & 터치 슬라이드 기능 (PC & 모바일 대응)
+// ✅ 갤러리 슬라이드 기능 수정 (PC & 모바일 지원)
 let isDown = false;
-let startX;
-let scrollLeft;
+let startX, startScrollLeft;
 
 galleryContainer.addEventListener("mousedown", (e) => {
     isDown = true;
+    galleryContainer.classList.add("active");
     startX = e.pageX - galleryContainer.offsetLeft;
-    scrollLeft = galleryContainer.scrollLeft;
+    startScrollLeft = galleryContainer.scrollLeft;
 });
 
-galleryContainer.addEventListener("mouseleave", () => isDown = false);
-galleryContainer.addEventListener("mouseup", () => isDown = false);
+galleryContainer.addEventListener("mouseleave", () => {
+    isDown = false;
+    galleryContainer.classList.remove("active");
+});
+
+galleryContainer.addEventListener("mouseup", () => {
+    isDown = false;
+    galleryContainer.classList.remove("active");
+});
+
 galleryContainer.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
-    const x = e.pageX - galleryContainer.offsetLeft;
-    const walk = (x - startX) * 2;
-    galleryContainer.scrollLeft = scrollLeft - walk;
+    let x = e.pageX - galleryContainer.offsetLeft;
+    let walk = (x - startX) * 2; // 이동 속도 조절
+    galleryContainer.scrollLeft = startScrollLeft - walk;
 });
 
+// ✅ 모바일 터치 이벤트 추가
 galleryContainer.addEventListener("touchstart", (e) => {
     isDown = true;
     startX = e.touches[0].pageX - galleryContainer.offsetLeft;
-    scrollLeft = galleryContainer.scrollLeft;
-});
+    startScrollLeft = galleryContainer.scrollLeft;
+}, { passive: true });
 
 galleryContainer.addEventListener("touchmove", (e) => {
     if (!isDown) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - galleryContainer.offsetLeft;
-    const walk = (x - startX) * 2;
-    galleryContainer.scrollLeft = scrollLeft - walk;
-});
+    e.preventDefault(); // ✅ 기본 스크롤 동작 방지
+    let x = e.touches[0].pageX - galleryContainer.offsetLeft;
+    let walk = (x - startX) * 2; // 이동 속도 조절
+    galleryContainer.scrollLeft = startScrollLeft - walk;
+}, { passive: false });
 
 galleryContainer.addEventListener("touchend", () => {
     isDown = false;
