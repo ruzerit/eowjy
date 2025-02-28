@@ -150,5 +150,9 @@ body {
 
 .about img {
     width: 100%;
-    max-width: 800px;
+    max-width: 600px; /* 가로 크기를 3:4 비율에 맞게 조정 */
+    aspect-ratio: 3 / 4; /* 가로 3 : 세로 4 비율 유지 */
+    object-fit: cover; /* 이미지가 비율을 유지하며 꽉 차게 표시 */
+    display: block;
+    margin: 0 auto;
 }
