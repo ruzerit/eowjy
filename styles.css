@@ -35,7 +35,7 @@ body {
     position: absolute;
     top: 65%;
     left: 50%;
-    transform: translateX(-10px);
+    transform: translateX(-50%);
     color: #fff;
     background: rgba(0, 0, 0, 0.5); /* 가독성을 위해 반투명 배경 추가 */
     padding: 10px 20px;
@@ -45,7 +45,16 @@ body {
     text-align: center;
     display: block; 
     animation: fadeInUp 0.8s ease-out forwards;
-    z-index: 20; /* 다른 요소 위에 오도록 */ 
+    z-index: 20; /* 다른 요소 위에 오도록 */
+}
+
+/* ✅ 모바일에서 커버 제목 조정 */
+@media (max-width: 768px) {
+    .cover-content h1 {
+        font-size: 28px; /* 모바일에서 글자 크기 조정 */
+        top: 60%; /* 위치 조정 */
+        padding: 8px 16px;
+    }
 }
 
 /* ✅ 모바일에서 커버 이미지 비율 조정 */
@@ -54,17 +63,6 @@ body {
         height: 50vh; 
         max-height: 450px;
         background-position: 50% 50%;
-    }
-}
-    .cover-content h1 {
-        font-size: 32px;
-        font-weight: 300;
-        color: #fff;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(-10px);
-        animation: fadeInUp 0.8s ease-out forwards;
-        z-index: 20;
     }
 }
 
@@ -151,8 +149,8 @@ body.dark-mode {
 }
 
 body.dark-mode .contact {
-    background-color: #121212;
-    color: #ffffff; /* 다크모드에서 링크 색상 변경 */
+    background-color: #1e1e1e;
+    color: #ffffff;
 }
 
 /* ✅ 다크 모드 스타일 (자동 감지) */
@@ -170,11 +168,11 @@ body.dark-mode .contact {
     .modal {
         background: rgba(0, 0, 0, 0.9);
     }
-    
-    body.dark-mode .contact {
-        background-color: #121212;
-        color: #ffffff; /* 다크모드에서 링크 색상 변경 */
+    .contact {
+        background-color: #1e1e1e;
+        color: #ffffff;
     }
+    
 
 #darkModeToggle {
     position: fixed;

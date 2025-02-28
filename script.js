@@ -1,6 +1,9 @@
 // ✅ 요소 가져오기
 const galleryContainer = document.querySelector(".gallery-container");
 const galleryItems = document.querySelectorAll(".gallery-item");
+let isDown = false; // ✅ 변수를 미리 선언
+let startX, startScrollLeft;
+
 const videoModal = document.getElementById("modalVideoCheck");
 const compCardModal = document.getElementById("modalCompCard");
 const galleryModal = document.getElementById("galleryModal");
@@ -59,6 +62,11 @@ function updateCenterImage() {
         }
     });
 
+    // ✅ 강조 효과 적용
+    galleryItems.forEach((item, index) => {
+        item.classList.toggle("active", index === closestIndex);
+    });
+
     // ✅ 자동 중앙 정렬
     let selectedItem = galleryItems[closestIndex];
     galleryContainer.scrollTo({
@@ -66,6 +74,35 @@ function updateCenterImage() {
         behavior: "smooth"
     });
 }
+
+// ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 유지
+galleryContainer.addEventListener("scroll", function () {
+    clearTimeout(window.scrollTimer);
+    window.scrollTimer = setTimeout(updateCenterImage, 100);
+});
+
+// ✅ 드래그 스크롤 기능 수정
+galleryContainer.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - galleryContainer.offsetLeft;
+    startScrollLeft = galleryContainer.scrollLeft;
+});
+
+galleryContainer.addEventListener("mouseleave", () => {
+    isDown = false;
+});
+
+galleryContainer.addEventListener("mouseup", () => {
+    isDown = false;
+});
+
+galleryContainer.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    let x = e.pageX - galleryContainer.offsetLeft;
+    let walk = (x - startX) * 2;
+    galleryContainer.scrollLeft = startScrollLeft - walk;
+});
 
 // ✅ 모바일 터치 이벤트 추가
 galleryContainer.addEventListener("touchstart", (e) => {
