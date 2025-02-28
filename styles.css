@@ -107,12 +107,28 @@ body {
     margin-bottom: 10px;
 }
 
-.buttons button {
-    background: rgba(255, 255, 255, 0.5);
+/* 버튼 기본 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.3); /* 어두운 배경 */
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover, .cover .btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* 연락처 및 소개 */
