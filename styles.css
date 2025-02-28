@@ -119,6 +119,37 @@ body {
     object-fit: cover; /* 비율 유지하면서 꽉 차게 */
 }
 
+/* 모바일에서 커버 이미지 더 작게 조정 */
+@media (max-width: 768px) {
+    .cover {
+        height: 50vh; 
+        max-height: 450px;
+        background-position: 50% 50%;
+    }
+}
+    .cover h1 {
+        font-size: 32px;
+        font-weight: 300;
+        color: #fff;
+        margin-bottom: 15px;
+        opacity: 0;
+        transform: translateY(-10px);
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+/* 📌 모바일에서 타이틀 폰트 크기 더 작게 조정 */
+@media (max-width: 768px) {
+    .cover h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+}
+
+@keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+    
 .cover h1 {
     color: white;
     font-size: 2em;
