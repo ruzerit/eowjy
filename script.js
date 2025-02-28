@@ -67,7 +67,7 @@ function updateCenterImage() {
 // ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 galleryContainer.addEventListener("scroll", updateCenterImage);
 
-// ✅ 갤러리 슬라이드 기능 수정 (PC & 모바일 지원)
+// ✅ 갤러리 슬라이드 기능 정상 작동하도록 수정
 let isDown = false;
 let startX, startScrollLeft;
 
@@ -92,7 +92,7 @@ galleryContainer.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
     let x = e.pageX - galleryContainer.offsetLeft;
-    let walk = (x - startX) * 2; // 이동 속도 조절
+    let walk = (x - startX) * 2; // ✅ 이동 속도 조절
     galleryContainer.scrollLeft = startScrollLeft - walk;
 });
 
@@ -105,9 +105,9 @@ galleryContainer.addEventListener("touchstart", (e) => {
 
 galleryContainer.addEventListener("touchmove", (e) => {
     if (!isDown) return;
-    e.preventDefault(); // ✅ 기본 스크롤 동작 방지
+    e.preventDefault();
     let x = e.touches[0].pageX - galleryContainer.offsetLeft;
-    let walk = (x - startX) * 2; // 이동 속도 조절
+    let walk = (x - startX) * 2;
     galleryContainer.scrollLeft = startScrollLeft - walk;
 }, { passive: false });
 
