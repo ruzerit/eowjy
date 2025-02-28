@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayeon Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header class="cover">
+        <div class="cover-content">
+            <h1>Gayeon| Portfolio</h1>
+            <div class="buttons">
+                <button id="compCardBtn">Comp Card</button>
+                <button id="videoCheckBtn">Video Check</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="modalCompCard" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalCompCard')">&times;</span>
+            <img src="comp_card.jpg" alt="Comp Card">
+        </div>
+    </div>
+
+    <div id="modalVideoCheck" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalVideoCheck')">&times;</span>
+            <video controls>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <section class="gallery">
+        <div class="gallery-container">
+            <div class="gallery-item"><img src="photo1.jpg" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="photo2.jpg" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="photo3.jpg" alt="Portfolio Image"></div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <p>Contact: eowjy@email.com</p>
+        <button onclick="window.location.href='video_portfolio.html'">Video Portfolio</button>
+    </section>
+
+    <section class="about">
+        <img src="about_gayeon.jpg" alt="About Gayeon">
+    </section>
+</body>
+</html>
