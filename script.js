@@ -18,13 +18,6 @@ document.getElementById("videoCheckBtn").addEventListener("click", function () {
 
 // ✅ 초기 설정 (모달 숨김 및 비디오 자동 재생 방지)
 document.addEventListener("DOMContentLoaded", function () {
-    let initialIndex = 1; // 두 번째 이미지 (0부터 시작)
-    let containerCenter = galleryContainer.clientWidth / 2;
-    let selectedItem = galleryItems[initialIndex];
-
-    galleryContainer.scrollLeft = selectedItem.offsetLeft - containerCenter + selectedItem.offsetWidth / 2;
-    updateCenterImage();
-
     [videoModal, compCardModal, galleryModal].forEach(modal => {
         if (modal) {
             modal.style.display = "none";
@@ -37,6 +30,18 @@ document.addEventListener("DOMContentLoaded", function () {
         videoElement.removeAttribute("autoplay");
         videoElement.pause();
     }
+    
+    // ✅ 초기 갤러리 중앙 정렬 (2번 사진을 중앙에 위치)
+    setTimeout(() => {
+        let initialIndex = 1; // 두 번째 이미지 (0부터 시작)
+        let containerCenter = galleryContainer.clientWidth / 2;
+        let selectedItem = galleryItems[initialIndex];
+
+        galleryContainer.scrollLeft = selectedItem.offsetLeft - containerCenter + selectedItem.offsetWidth / 2;
+        updateCenterImage();
+    }, 100); // 레이아웃이 완전히 로드된 후 실행되도록 약간의 지연 추가
+});
+
 
 // ✅ 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 function updateCenterImage() {
