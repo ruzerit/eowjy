@@ -163,3 +163,51 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+// 갤러리 이미지 클릭 시 모달 열기 (JPG 확장자 인식 포함)
+function openGalleryModal(imgElement) {
+    let galleryModal = document.getElementById("galleryModal");
+    let galleryImage = document.getElementById("galleryImage");
+
+    if (galleryModal && galleryImage) {
+        let imgSrc = imgElement.src;
+
+        // ✅ 확장자를 소문자로 변환하여 .JPG도 인식 가능하게 처리
+        let lowerCaseSrc = imgSrc.toLowerCase();
+        
+        if (lowerCaseSrc.endsWith(".jpg")) { // ".jpg", ".JPG" 둘 다 인식
+            galleryImage.src = imgSrc;
+            galleryModal.style.display = "flex";
+            setTimeout(() => {
+                galleryModal.style.opacity = "1";
+                galleryModal.style.visibility = "visible";
+            }, 50);
+        } else {
+            console.warn("이미지 파일이 .JPG 확장자가 아닙니다:", imgSrc);
+        }
+    }
+}
+
+// 컴카드 및 비디오 모달에도 확장자 인식 추가
+function openCompCardModal(imgElement) {
+    let compCardModal = document.getElementById("modalCompCard");
+    let compCardImage = document.getElementById("compCardImage");
+
+    if (compCardModal && compCardImage) {
+        let imgSrc = imgElement.src;
+
+        // ✅ 확장자 대소문자 구분 없이 인식
+        let lowerCaseSrc = imgSrc.toLowerCase();
+        
+        if (lowerCaseSrc.endsWith(".jpg")) {
+            compCardImage.src = imgSrc;
+            compCardModal.style.display = "flex";
+            setTimeout(() => {
+                compCardModal.style.opacity = "1";
+                compCardModal.style.visibility = "visible";
+            }, 50);
+        } else {
+            console.warn("컴카드 이미지 파일이 .JPG 확장자가 아닙니다:", imgSrc);
+        }
+    }
+}
