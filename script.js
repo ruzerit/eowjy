@@ -49,7 +49,6 @@ galleryContainer.addEventListener("touchend", () => {
     isDown = false;
 });
 
-
 // 기존 갤러리 이미지 클릭 이벤트 제거 후 새로 추가
 document.querySelectorAll(".gallery-item img").forEach(img => {
     img.addEventListener("click", function () {
@@ -64,17 +63,24 @@ document.querySelectorAll(".gallery-item img").forEach(img => {
     });
 });
 
-// 갤러리 중앙 정렬 및 강조 효과 적용
-const galleryContainer = document.querySelector(".gallery-container");
-const galleryItems = document.querySelectorAll(".gallery-item");
-
 function updateCenterImage() {
     let scrollLeft = galleryContainer.scrollLeft;
-    let itemWidth = galleryItems[0].offsetWidth + 10; // 이미지 너비 + 갭 크기
-    let centerIndex = Math.round(scrollLeft / itemWidth); // 정확한 중앙 이미지 찾기
+    let containerCenter = galleryContainer.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
 
     galleryItems.forEach((item, index) => {
-        if (index === centerIndex) {
+        let itemCenter = item.offsetLeft - galleryContainer.offsetLeft + (item.offsetWidth / 2);
+        let distance = Math.abs(itemCenter - (scrollLeft + containerCenter));
+
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+        }
+    });
+
+    galleryItems.forEach((item, index) => {
+        if (index === closestIndex) {
             item.classList.add("active");
         } else {
             item.classList.remove("active");
@@ -82,8 +88,21 @@ function updateCenterImage() {
     });
 }
 
+// 페이지 로드 시 초기 중앙 정렬 적용
+document.addEventListener("DOMContentLoaded", updateCenterImage);
+galleryContainer.addEventListener("scroll", updateCenterImage);
+
+// 갤러리 중앙 정렬 및 강조 효과 적용
+const galleryContainer = document.querySelector(".gallery-container");
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+
 // 가로 스크롤 이벤트 감지하여 중앙 정렬 적용
 galleryContainer.addEventListener("scroll", updateCenterImage);
+
+// 페이지 로드 시 중앙 강조 적용
+document.addEventListener("DOMContentLoaded", updateCenterImage);
+
 
 // 이미지 확장자 자동 인식 (jpg, JPG, png, PNG, jpeg 등)
 document.querySelectorAll(".gallery-item img").forEach(img => {
@@ -145,4 +164,30 @@ document.getElementById('compCardBtn')?.addEventListener('click', function () {
             compCardModal.style.opacity = "1";
         }, 50);
     }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let videoModal = document.getElementById("modalVideoCheck");
+    let compCardModal = document.getElementById("modalCompCard");
+    let videoElement = document.querySelector("#modalVideoCheck video");
+
+    // 비디오 자동 재생 방지 먼저 실행
+    if (videoElement) {
+        videoElement.removeAttribute("autoplay");
+        videoElement.pause();
+    }
+
+    // 모달 자동 숨김 (강제 적용)
+    setTimeout(() => {
+        if (videoModal) {
+            videoModal.style.display = "none";
+            videoModal.style.opacity = "0";
+            videoModal.style.visibility = "hidden";
+        }
+        if (compCardModal) {
+            compCardModal.style.display = "none";
+            compCardModal.style.opacity = "0";
+            compCardModal.style.visibility = "hidden";
+        }
+    }, 100); // 0.1초 후 강제 숨김
 });
