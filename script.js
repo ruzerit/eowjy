@@ -227,25 +227,3 @@ document.addEventListener("scroll", function () {
     });
 });
 
-//JPG 확장자 인식 포함
-function openGalleryModal(imgElement) {
-    let galleryModal = document.getElementById("galleryModal");
-    let galleryImage = document.getElementById("galleryImage");
-
-    if (galleryModal && galleryImage) {
-        let imgSrc = imgElement.src;
-        let lowerCaseSrc = imgSrc.toLowerCase();
-        
-        if (lowerCaseSrc.endsWith(".jpg")) {
-            galleryImage.src = imgSrc;
-            galleryModal.style.display = "flex";
-            setTimeout(() => {
-                galleryModal.style.opacity = "1";
-                galleryModal.style.visibility = "visible";
-            }, 50);
-        } else {
-            console.warn("이미지 파일이 .JPG 확장자가 아닙니다:", imgSrc);
-        }
-    }
-}
-

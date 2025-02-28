@@ -239,12 +239,12 @@ body.dark-mode .contact {
 
 /* ✅ 갤러리 아이템 크기 조정 */
 .gallery-item {
-    flex: 0 0 30%; /* 한 번에 3개씩 보이도록 설정 */
+    flex: 0 0 auto; /* 한 번에 3개씩 보이도록 설정 */
     scroll-snap-align: center;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     position: relative;
     z-index: 1;
-    max-width: 280px;
+    max-width: 250px;
     aspect-ratio: 3 / 4; /* ✅ 3:4 비율 유지 */
     overflow: hidden;
     display: flex;
@@ -267,9 +267,15 @@ body.dark-mode .contact {
 }
 
 .gallery-item.active {
-    transform: scale(1.2);
+    transform: scale(1.3);
     opacity: 1;
     z-index: 10;
+    max-width: 250px;
+    aspect-ratio: 3 / 4;
+}
+
+.gallery-item.active img{
+    object-fit: contain;
 }
 
 /* ✅ 비활성화된 갤러리 아이템 */
