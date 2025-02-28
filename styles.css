@@ -293,6 +293,106 @@ body.dark-mode .contact {
     }
 }
 
+/* ✅ 키 & 3사이즈 정보 스타일 */
+.model-info {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+/* ✅ 갤러리2 스타일 (세로 비율 유지 + 사진 꽉 차게 정렬) */
+.gallery2-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* ✅ 갤러리2 이미지 비율 유지 */
+.gallery2-item {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* ✅ 3:4 비율 유지 */
+    overflow: hidden;
+    opacity: 0; /* ✅ 초기 숨김 (스크롤 내릴 때 나타나게) */
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* ✅ 애니메이션: 화면에 나타날 때 */
+.gallery2-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ✅ 갤러리2 이미지 */
+.gallery2-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* ✅ 갤러리2 모달 */
+#gallery2Modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* ✅ 모달 내부 */
+#gallery2Modal .modal-content {
+    position: relative;
+    max-width: 600px;
+    padding: 20px;
+}
+
+#gallery2Modal img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* ✅ 모달 파일명 표시 */
+#gallery2Filename {
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* ✅ 모달 닫기 버튼 */
+#gallery2Modal .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ✅ 슬라이드 화살표 */
+#gallery2Modal .prev, #gallery2Modal .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#gallery2Modal .prev { left: 10px; }
+#gallery2Modal .next { right: 10px; }
+
 /* 연락처 및 소개 */
 .contact {
     margin-top: 30px; /* 갤러리와 컨택란 간격 확보 */

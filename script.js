@@ -172,6 +172,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+let gallery2Images = document.querySelectorAll(".gallery2-item img");
+let currentGallery2Index = 0;
+
+// ✅ 갤러리2 모달 열기
+function openGallery2Modal(index) {
+    currentGallery2Index = index;
+    let imgElement = gallery2Images[index];
+    let filename = imgElement.parentElement.dataset.filename;
+
+    document.getElementById("gallery2Image").src = imgElement.src;
+    document.getElementById("gallery2Filename").innerText = filename;
+    document.getElementById("gallery2Modal").style.display = "flex";
+}
+
+// ✅ 갤러리2 모달 닫기
+function closeGallery2Modal() {
+    document.getElementById("gallery2Modal").style.display = "none";
+}
+
+// ✅ 이전 이미지 보기
+function prevGallery2Image() {
+    if (currentGallery2Index > 0) {
+        currentGallery2Index--;
+        updateGallery2Modal();
+    }
+}
+
+// ✅ 다음 이미지 보기
+function nextGallery2Image() {
+    if (currentGallery2Index < gallery2Images.length - 1) {
+        currentGallery2Index++;
+        updateGallery2Modal();
+    }
+}
+
+// ✅ 모달 이미지 업데이트
+function updateGallery2Modal() {
+    let imgElement = gallery2Images[currentGallery2Index];
+    let filename = imgElement.parentElement.dataset.filename;
+
+    document.getElementById("gallery2Image").src = imgElement.src;
+    document.getElementById("gallery2Filename").innerText = filename;
+}
+
+// ✅ 스크롤 시 갤러리2 이미지 나타나는 애니메이션 적용
+document.addEventListener("scroll", function () {
+    let gallery2Items = document.querySelectorAll(".gallery2-item");
+    gallery2Items.forEach(item => {
+        let rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            item.classList.add("visible");
+        }
+    });
+});
+
 //JPG 확장자 인식 포함
 function openGalleryModal(imgElement) {
     let galleryModal = document.getElementById("galleryModal");

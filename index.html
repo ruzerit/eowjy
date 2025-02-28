@@ -33,7 +33,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-    </div>
+    </div> 
 
 <section class="gallery">
     <div class="gallery-wrapper">
@@ -68,5 +68,37 @@
     <section class="about">
         <img src="about_gayeon.jpg" alt="About Gayeon">
     </section>
+
+<!-- ✅ 기존 갤러리와 갤러리2 사이에 키 & 3사이즈 정보 -->
+<section class="model-info">
+    <p>Height: 173.5cm | Bust: 30 | Waist: 21 | Hips: 33 | Shoes: 245/37</p>
+</section>
+
+<!-- ✅ 갤러리2 (세로 비율 유지 + 클릭 시 모달) -->
+<section class="gallery2">
+    <div class="gallery2-container">
+        <div class="gallery2-item" data-filename="photo1.jpg">
+            <img src="image1.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(0)">
+        </div>
+        <div class="gallery2-item" data-filename="photo2.jpg">
+            <img src="image2.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(1)">
+        </div>
+        <div class="gallery2-item" data-filename="photo3.jpg">
+            <img src="image3.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(2)">
+        </div>
+        <!-- ✅ 필요한 만큼 이미지 추가 -->
+    </div>
+</section>
+
+<!-- ✅ 갤러리2 모달 (슬라이드 가능) -->
+<div class="modal" id="gallery2Modal">
+    <span class="close" onclick="closeGallery2Modal()">&times;</span>
+    <div class="modal-content">
+        <button class="prev" onclick="prevGallery2Image()">&#10094;</button>
+        <img id="gallery2Image" src="" alt="Gallery View">
+        <p id="gallery2Filename"></p>
+        <button class="next" onclick="nextGallery2Image()">&#10095;</button>
+    </div>
+</div> 
 </body>
 </html>
