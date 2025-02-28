@@ -8,6 +8,7 @@
     <script defer src="script.js"></script>
 </head>
 <body>
+    <!-- ✅ 1. 커버 (제목 & 유도 버튼) -->
     <section class="cover">
         <div class="cover-content">
             <h1>Gayeon | Model Portfolio</h1>
@@ -35,70 +36,74 @@
         </div>
     </div> 
 
-<section class="gallery">
-    <div class="gallery-wrapper">
-        <div class="gallery-container">
-            <div class="gallery-item"><img src="photo1.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo2.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo3.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo4.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo5.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo6.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo7.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo8.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
-            <div class="gallery-item"><img src="photo9.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+    <!-- ✅ 2. 갤러리1 -->
+    <section class="gallery">
+        <div class="gallery-wrapper">
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="photo1.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo2.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo3.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo4.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo5.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo6.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo7.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo8.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+                <div class="gallery-item"><img src="photo9.jpg" alt="Portfolio Image" onclick="openGalleryModal(this)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ 갤러리 모달 추가 -->
+    <div class="modal" id="galleryModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('galleryModal')">&times;</span>
+            <img id="galleryImage" src="" alt="Gallery Image">
         </div>
     </div>
-</section>
 
-<!-- ✅ 갤러리 모달 추가 -->
-<div class="modal" id="galleryModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('galleryModal')">&times;</span>
-        <img id="galleryImage" src="" alt="Gallery Image">
-    </div>
-</div>
+    <!-- ✅ 3. 키 & 3사이즈 정보 -->
+    <section class="model-info">
+        <p>Height: 173.5cm | Bust: 30 | Waist: 22 | Hips: 33 | Shoes: 245/37</p>
+    </section>
 
+    <!-- ✅ 갤러리2 (세로만 일정하게 유지, 원본 비율 유지) -->
+    <section class="gallery2">
+        <div class="gallery2-container">
+            <div class="gallery2-item" data-filename="photo4.jpg">
+                <img src="photo4.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(0)">
+            </div>
+            <div class="gallery2-item" data-filename="photo5.jpg">
+                <img src="photo5.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(1)">
+            </div>
+            <div class="gallery2-item" data-filename="photo6.jpg">
+                <img src="photo6.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(2)">
+            </div>
+            <!-- ✅ 필요한 만큼 추가 -->
+        </div>
+    </section>
+
+    <!-- ✅ 갤러리2 모달 (슬라이드 가능) -->
+    <div class="modal" id="gallery2Modal">
+        <span class="close" onclick="closeGallery2Modal()">&times;</span>
+        <div class="modal-content">
+            <button class="prev" onclick="prevGallery2Image()">&#10094;</button>
+            <img id="gallery2Image" src="" alt="Gallery View">
+            <p id="gallery2Filename"></p>
+            <button class="next" onclick="nextGallery2Image()">&#10095;</button>
+        </div>
+    </div> 
+
+    <!-- ✅ 5. 컨택 (연락처 & SNS 정보) -->
     <section class="contact">
-        <p>Contact: eowjy@email.com</p>
-        <p>Instagram: <a href="https://www.instagram.com/ruzerit" target="_blank">@ruzerit</a></p>
-        <button onclick="window.location.href='video_portfolio.html'">Video Portfolio</button>
+        <h2>Contact</h2>
+        <p>Email: eowjy@email.com</p>
+        <p>Instagram: <a href="https://instagram.com/ruzerit" target="_blank">@ruzerit</a></p>
     </section>
 
+    <!-- ✅ 6. 어바웃 가연 -->
     <section class="about">
-        <img src="about_gayeon.jpg" alt="About Gayeon">
+        <h2>About Ga Yeon</h2>
+        <img src="about-image.jpg" alt="Ga Yeon">
     </section>
-
-<!-- ✅ 기존 갤러리와 갤러리2 사이에 키 & 3사이즈 정보 -->
-<section class="model-info">
-    <p>Height: 173.5cm | Bust: 30 | Waist: 21 | Hips: 33 | Shoes: 245/37</p>
-</section>
-
-<!-- ✅ 갤러리2 (세로 비율 유지 + 클릭 시 모달) -->
-<section class="gallery2">
-    <div class="gallery2-container">
-        <div class="gallery2-item" data-filename="photo1.jpg">
-            <img src="image1.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(0)">
-        </div>
-        <div class="gallery2-item" data-filename="photo2.jpg">
-            <img src="image2.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(1)">
-        </div>
-        <div class="gallery2-item" data-filename="photo3.jpg">
-            <img src="image3.jpg" alt="Gallery Image" loading="lazy" onclick="openGallery2Modal(2)">
-        </div>
-        <!-- ✅ 필요한 만큼 이미지 추가 -->
-    </div>
-</section>
-
-<!-- ✅ 갤러리2 모달 (슬라이드 가능) -->
-<div class="modal" id="gallery2Modal">
-    <span class="close" onclick="closeGallery2Modal()">&times;</span>
-    <div class="modal-content">
-        <button class="prev" onclick="prevGallery2Image()">&#10094;</button>
-        <img id="gallery2Image" src="" alt="Gallery View">
-        <p id="gallery2Filename"></p>
-        <button class="next" onclick="nextGallery2Image()">&#10095;</button>
-    </div>
-</div> 
 </body>
 </html>
