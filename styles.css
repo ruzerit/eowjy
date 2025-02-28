@@ -169,7 +169,11 @@ body.dark-mode {
     background: rgba(0, 0, 0, 0.9);
 }
 
-/* ✅ 다크모드 전환 버튼 스타일 */
+body.dark-mode .contact {
+    background: #1e1e1e;
+    color: #bb86fc; /* 다크모드에서 링크 색상 변경 */
+}
+
 #darkModeToggle {
     position: fixed;
     top: 20px;
@@ -234,12 +238,11 @@ body.dark-mode {
 .gallery {
     position: relative;
     width: 100%;
-    min-height: 70vh; /* 갤러리 공간 확보 */
-    padding: 30px 0; /* 기존보다 간격 축소 */
-    overflow: hidden; /* 확대 시 잘리는 문제 방지 */
+    min-height: 60vh;
+    padding: 20px 0;
+    overflow: hidden;
 }
 
-/* ✅ 갤러리 한 번에 3개씩 보이도록 조정 */
 .gallery-container {
     display: flex;
     overflow-x: auto;
@@ -323,15 +326,6 @@ body.dark-mode {
     background: white;
 }
 
-/* ✅ 컨택 창 다크모드 적용 */
-body.dark-mode .contact {
-    background: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .contact a {
-    color: #bb86fc; /* 다크모드에서 링크 색상 변경 */
-}
 
 .about img {
     width: 100%;
