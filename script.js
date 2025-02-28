@@ -1,21 +1,27 @@
-// 모달 초기 상태 숨기기
+// 모달 초기 상태 숨기기 (기존 코드에서 display를 "none"으로 설정)
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("modalCompCard").style.display = "none";
-    document.getElementById("modalVideoCheck").style.display = "none";
+    let videoModal = document.getElementById("modalVideoCheck");
+    let compCardModal = document.getElementById("modalCompCard");
+
+    if (videoModal) videoModal.style.display = "none";
+    if (compCardModal) compCardModal.style.display = "none";
 });
 
-// 모달 닫기 함수
+// 모달 닫기 함수 수정 (존재 여부 체크 추가)
 function closeModal(id) {
-    document.getElementById(id).style.display = "none";
+    let modal = document.getElementById(id);
+    if (modal) modal.style.display = "none";
 }
 
-// 모달 열기 이벤트 추가
-document.getElementById('compCardBtn').addEventListener('click', function () {
-    document.getElementById('modalCompCard').style.display = 'flex';
+// 모달 열기 이벤트 수정 (존재 여부 체크 추가)
+document.getElementById('compCardBtn')?.addEventListener('click', function () {
+    let compCardModal = document.getElementById("modalCompCard");
+    if (compCardModal) compCardModal.style.display = 'flex';
 });
 
-document.getElementById('videoCheckBtn').addEventListener('click', function () {
-    document.getElementById('modalVideoCheck').style.display = 'flex';
+document.getElementById('videoCheckBtn')?.addEventListener('click', function () {
+    let videoModal = document.getElementById("modalVideoCheck");
+    if (videoModal) videoModal.style.display = 'flex';
 });
 
 // 갤러리 가로 슬라이드 기능 추가 (터치 및 마우스 드래그 지원)
